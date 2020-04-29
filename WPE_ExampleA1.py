@@ -33,7 +33,8 @@ get_output(list_numbers)
 #import pytest
 #from solution import print_solutions
 #from io import StringIO
-
+#mp = monkeypatch
+#caps = capsys
 
 def test_no_numbers(monkeypatch, capsys):
     monkeypatch.setattr('sys.stdin', StringIO('\n'))
@@ -57,7 +58,7 @@ def test_five_numbers(monkeypatch, capsys):
     assert 'Sum: 150' in captured_out
     assert 'Mean: 30.0' in captured_out
 
-#test_no_numbers(monkeypatch, capsys)
+#test_no_numbers()
 #test_five_numbers(monkeypatch, capsys)
 
 sys.exit()
