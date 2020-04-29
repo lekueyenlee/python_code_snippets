@@ -8,6 +8,8 @@ The built-in "len" function
 '''
 
 import sys
+import pytest
+from io import StringIO
 
 list_numbers = []
 
@@ -27,6 +29,36 @@ while (user_input != ''):
 
 get_output(list_numbers)
 
+
+#import pytest
+#from solution import print_solutions
+#from io import StringIO
+
+
+def test_no_numbers(monkeypatch, capsys):
+    monkeypatch.setattr('sys.stdin', StringIO('\n'))
+
+    with pytest.raises(ZeroDivisionError):
+        get_output(list_numbers)
+        captured_out, captured_err = capsys.readouterr()
+
+        assert 'Smallest: None' in captured_out
+        assert 'Largest: None' in captured_out
+
+
+def test_five_numbers(monkeypatch, capsys):
+    monkeypatch.setattr('sys.stdin', StringIO('10\n20\n30\n40\n50\n\n'))
+
+    get_output(list_numbers)
+    captured_out, captured_err = capsys.readouterr()
+
+    assert 'Smallest: 10' in captured_out
+    assert 'Largest: 50' in captured_out
+    assert 'Sum: 150' in captured_out
+    assert 'Mean: 30.0' in captured_out
+
+#test_no_numbers(monkeypatch, capsys)
+#test_five_numbers(monkeypatch, capsys)
 
 sys.exit()
 
