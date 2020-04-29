@@ -24,4 +24,4 @@ def print_solutions():
     print(f"Sum: {sum(all_numbers)}")
     print(f"Mean: {sum(all_numbers ) / len(all_numbers)}")
 
-print_solutions()
+#print_solutions()
