@@ -1,14 +1,20 @@
+'''  Question:  what is the difference b/w using the below
+''      - from solution_wpe_1 import print_solutions()
+''      - import solution_wpe_1 
+''
+''
+'''
+
 import pytest
-from solution_wpe_1 import print_solutions
+import solution_wpe_1
 from io import StringIO
-#mp = monkeypatch
-#caps = capsys
+
 
 def test_no_numbers(monkeypatch, capsys):
     monkeypatch.setattr('sys.stdin', StringIO('\n'))
 
     with pytest.raises(ZeroDivisionError):
-        print_solutions()
+        solution_wpe_1.print_solutions()
         captured_out, captured_err = capsys.readouterr()
 
         assert 'Smallest: None' in captured_out
@@ -17,7 +23,7 @@ def test_no_numbers(monkeypatch, capsys):
 
 def test_five_numbers(monkeypatch, capsys):
     monkeypatch.setattr('sys.stdin', StringIO('10\n20\n30\n40\n50\n\n'))
-    print_solutions()
+    solution_wpe_1.print_solutions()
     captured_out, captured_err = capsys.readouterr()
 
     assert 'Smallest: 10' in captured_out

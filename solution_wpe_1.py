@@ -1,3 +1,6 @@
+# Defined the print_solutions() method
+# Doesn't use the min() and max() methods, instead uses the comparison methods to assign and store values
+
 
 def print_solutions():
     all_numbers = []
